@@ -1,0 +1,1 @@
+在没有libc的情况下可以选择通过使用pwntools中的DynELF模块来泄露函数地址
