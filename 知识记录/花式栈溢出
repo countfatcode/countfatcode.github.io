@@ -1,3 +1,3 @@
-一·劫持栈顶指针指向写入的shellcode。
+一·劫持栈顶指针指向写入的shellcode。劫持栈顶指针的gadgets可以在程序中找，也可以自己用pwntools中的asm汇编生成
     注意：如将shellcode写入到栈中需要关闭数据执行保护
           可以考虑把shellcode写入到.bss中
