@@ -1,0 +1,3 @@
+一·劫持栈顶指针指向写入的shellcode。
+    注意：如将shellcode写入到栈中需要关闭数据执行保护
+          可以考虑把shellcode写入到.bss中
