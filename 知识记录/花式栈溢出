@@ -4,3 +4,7 @@
           
 frame faking:
     溢出的字符只能控制栈底和函数返回值时，通过控制栈底和栈顶指针的值和两个leave | ret 使程序回到之前的栈从而执行写入的代码
+
+stack smashes:
+    程序加了canary保护后，如果我们读取的buffer覆盖了对应的值，程序就会报错，__stack_chk_fail函数就会打印argv[0]的值，如果程序中出现flag字样，
+    就可以利用此方式输出flag。
