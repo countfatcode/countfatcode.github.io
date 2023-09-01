@@ -20,12 +20,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>标签：随记 - countfatcode</title>
+  <title>标签：笔记 - countfatcode</title>
 
   
     <meta property="og:type" content="website">
 <meta property="og:title" content="countfatcode">
-<meta property="og:url" content="http://example.com/tags/%E9%9A%8F%E8%AE%B0/index.html">
+<meta property="og:url" content="http://example.com/tags/%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="countfatcode">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="John Doe">
@@ -95,13 +95,24 @@
 
   
 
-<div class="nav-wrap"><nav class="sub post cap"><a href="/">近期发布</a><a href="/categories">分类</a><a class="active" href="/tags">标签：随记</a><a href="/archives">归档</a></nav></div>
-  <div class="post-list post"><a class="post-card post " href="/2023/09/01/blog-template/">
-<article class="md-text"><h2 class="post-title">博客模板</h2><div class="excerpt"><p>博客模板
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2023-09-01T14:35:19.495Z">2023-09-01</time></span><span class="cap breadcrumb">记录</span></div></article>
-</a><a class="post-card post " href="/2023/03/21/hello-world/">
-<article class="md-text"><h2 class="post-title">Hello World</h2><div class="excerpt"><p>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2023-03-21T10:02:40.218Z">2023-03-21</time></span><span class="cap breadcrumb">日常</span></div></article>
+<div class="nav-wrap"><nav class="sub post cap"><a href="/">近期发布</a><a href="/categories">分类</a><a class="active" href="/tags">标签：笔记</a><a href="/archives">归档</a></nav></div>
+  <div class="post-list post"><a class="post-card post " href="/2023/09/01/fuzz/">
+<article class="md-text"><h2 class="post-title">模糊测试</h2><div class="excerpt"><p>种子选择与引导机制
+有没有新边被覆盖
+
+旧边被覆盖的次数有所增长（有种子走重复的路，应该剔除）
+
+如何记录已经被覆盖的边？
+
+bitmap记录被覆盖的边以及被覆盖的次数
+
+
+
+边覆盖引导优于块覆盖引导（块覆盖可能会遗漏边）
+第一个问题边覆盖引导的问题？（有些路径会被丢弃）
+第一个问题：局部路径引导机制
+状态空间爆炸问题？（增大状态空间 or 算法层面进行降维）
+基本块引导 &amp;rarr...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2023-09-01T15:05:40.820Z">2023-09-01</time></span><span class="cap breadcrumb">模糊测试</span></div></article>
 </a></div>
   
 
